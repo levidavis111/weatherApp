@@ -30,5 +30,8 @@ class WeatherAppTests: XCTestCase {
         }
     }
     
-
+//    func getWeather() -> Weather {
+//        
+//    }
+    
 }
