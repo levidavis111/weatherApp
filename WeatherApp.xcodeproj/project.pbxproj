@@ -25,6 +25,10 @@
 		FC7775EE234E86020063B69A /* Weather.json in Resources */ = {isa = PBXBuildFile; fileRef = FC7775EC234E86020063B69A /* Weather.json */; };
 		FC777609234FBBEE0063B69A /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC777608234FBBEE0063B69A /* WeatherDetailViewController.swift */; };
 		FC77760A234FBBEE0063B69A /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC777608234FBBEE0063B69A /* WeatherDetailViewController.swift */; };
+		FC77760D234FD6100063B69A /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77760C234FD6100063B69A /* FavoritesView.swift */; };
+		FC77760E234FD6100063B69A /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77760C234FD6100063B69A /* FavoritesView.swift */; };
+		FC777610234FD63C0063B69A /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77760F234FD63C0063B69A /* FavoritesViewController.swift */; };
+		FC777611234FD63C0063B69A /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77760F234FD63C0063B69A /* FavoritesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,8 @@
 		FC7775EA234E79550063B69A /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC7775EC234E86020063B69A /* Weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Weather.json; sourceTree = "<group>"; };
 		FC777608234FBBEE0063B69A /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
+		FC77760C234FD6100063B69A /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		FC77760F234FD63C0063B69A /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +158,8 @@
 			children = (
 				FC7775E8234E79410063B69A /* WeatherViewController.swift */,
 				FC777608234FBBEE0063B69A /* WeatherDetailViewController.swift */,
+				FC77760C234FD6100063B69A /* FavoritesView.swift */,
+				FC77760F234FD63C0063B69A /* FavoritesViewController.swift */,
 				FC7775EA234E79550063B69A /* WeatherCollectionViewCell.swift */,
 			);
 			path = Controllers;
@@ -271,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC777610234FD63C0063B69A /* FavoritesViewController.swift in Sources */,
 				FC7775D3234E6B700063B69A /* WeatherAPIManager.swift in Sources */,
 				FC7775E9234E79410063B69A /* WeatherViewController.swift in Sources */,
 				FC7775CA234E64330063B69A /* NetworkManager.swift in Sources */,
@@ -279,6 +288,7 @@
 				FC7775EB234E79550063B69A /* WeatherCollectionViewCell.swift in Sources */,
 				FC7775D0234E64860063B69A /* AppError.swift in Sources */,
 				548CE052234D33B500B5177D /* AppDelegate.swift in Sources */,
+				FC77760D234FD6100063B69A /* FavoritesView.swift in Sources */,
 				548CE054234D33B500B5177D /* SceneDelegate.swift in Sources */,
 				FC777609234FBBEE0063B69A /* WeatherDetailViewController.swift in Sources */,
 				FC7775CE234E64770063B69A /* Weather.swift in Sources */,
@@ -291,6 +301,8 @@
 			files = (
 				FC77760A234FBBEE0063B69A /* WeatherDetailViewController.swift in Sources */,
 				FC7775DB234E6DAC0063B69A /* WeatherAppTests.swift in Sources */,
+				FC777611234FD63C0063B69A /* FavoritesViewController.swift in Sources */,
+				FC77760E234FD6100063B69A /* FavoritesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
