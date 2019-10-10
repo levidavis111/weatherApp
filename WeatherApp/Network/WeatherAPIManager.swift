@@ -20,7 +20,9 @@ struct WeatherAPIClient {
             case .success(let data):
                 do {
                     let weather = try Weather.getWeather(from: data)
-                    completionHandler(.success(weather))
+                    guard let weatherUnwrapped = weather else {completionHandler(.failure(.invalidJSONResponse));return
+                    }
+                    completionHandler(.success(weatherUnwrapped))
                 } catch {
                     completionHandler(.failure(.couldNotParseJSON(rawError: error)))
                 }

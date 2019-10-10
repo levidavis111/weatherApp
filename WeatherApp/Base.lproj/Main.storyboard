@@ -157,11 +157,56 @@
                     <connections>
                         <outlet property="cityForecastLabel" destination="kDm-j9-niM" id="nni-b4-Y3m"/>
                         <outlet property="textFieldOutlet" destination="aTc-5h-h5E" id="5hE-hl-6Gs"/>
+                        <outlet property="weatherCollectionView" destination="v8t-f9-XIL" id="CZV-aw-FWh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="118.52678571428571"/>
+        </scene>
+        <!--Weather Detail View Controller-->
+        <scene sceneID="YYH-CQ-Mh1">
+            <objects>
+                <viewController storyboardIdentifier="detailVC" id="hYD-vX-rJQ" customClass="WeatherDetailViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pgI-xx-xdz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hwr-QO-Xk3">
+                                <rect key="frame" x="87" y="162.5" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="db5-xl-8eE"/>
+                                    <constraint firstAttribute="width" constant="240" id="gXw-qA-6UE"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMB-Ti-3wW">
+                                <rect key="frame" x="107" y="347" width="200" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="JcN-wh-YGx"/>
+                                    <constraint firstAttribute="height" constant="21" id="XzU-gw-ioV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hwr-QO-Xk3" firstAttribute="centerX" secondItem="Qrf-hI-MM1" secondAttribute="centerX" id="Emv-aR-2Sp"/>
+                            <constraint firstItem="mMB-Ti-3wW" firstAttribute="top" secondItem="hwr-QO-Xk3" secondAttribute="bottom" constant="56.5" id="IMp-72-LYy"/>
+                            <constraint firstItem="mMB-Ti-3wW" firstAttribute="centerX" secondItem="Qrf-hI-MM1" secondAttribute="centerX" id="gIa-Jl-sl3"/>
+                            <constraint firstItem="hwr-QO-Xk3" firstAttribute="centerY" secondItem="Qrf-hI-MM1" secondAttribute="centerY" multiplier="0.5" id="zyI-rF-npT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qrf-hI-MM1"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailImageView" destination="hwr-QO-Xk3" id="86r-Fu-pEg"/>
+                        <outlet property="forecastLabel" destination="mMB-Ti-3wW" id="Fhi-h1-F4R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9gj-Zr-GPE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2010" y="119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DwR-It-xhC">
