@@ -13,7 +13,14 @@ class WeatherDetailViewController: UIViewController {
     var oneWeather: DailyDatum!
 
     @IBOutlet weak var detailImageView: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var forecastLabel: UILabel!
+    @IBOutlet weak var highTempLabel: UILabel!
+    @IBOutlet weak var lowTempLabel: UILabel!
+    @IBOutlet weak var sunriseLabel: UILabel!
+    @IBOutlet weak var sunsetLabel: UILabel!
+    @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var precipitationLabel: UILabel!
     
     
     override func viewDidLoad() {
