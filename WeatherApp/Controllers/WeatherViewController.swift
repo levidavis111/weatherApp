@@ -10,25 +10,35 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
+    //MARK: - Local variables
+    
     var weather: Weather? {
         didSet {
             weatherCollectionView.reloadData()
         }
     }
     
+    var lat: Double?
+    
+    var long: Double?
+    
     let cellSpacing: CGFloat = 5.0
+    
+    //MARK: - Outlets
     
     @IBOutlet weak var cityForecastLabel: UILabel!
     @IBOutlet weak var textFieldOutlet: UITextField!
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     
-    
+    //MARK: = Override functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegates()
-        loadData()
+//        loadData()
     }
+    
+    //MARK: - Private funtions
     
     private func setDelegates() {
         weatherCollectionView.delegate = self
@@ -37,7 +47,7 @@ class WeatherViewController: UIViewController {
     }
 
     private func loadData() {
-        WeatherAPIClient.manager.getWeather { (result) in
+        WeatherAPIClient.manager.getWeather(lat: self.lat ?? 0, long: self.long ?? 0) { (result) in
             switch result {
             case .failure(let error):
                 print(error)
@@ -47,11 +57,13 @@ class WeatherViewController: UIViewController {
         }
     }
     
-    private func getCoordinates() {
-        ZipCodeHelper.getLatLong(fromZipCode: "60613") { (result) in
+    private func getCoordinates(zipCode: String) {
+        ZipCodeHelper.getLatLong(fromZipCode: zipCode) { (result) in
             switch result {
             case let .success((lat, long)):
                 print(lat, long)
+                self.lat = lat
+                self.long = long
             case let .failure(error):
                 print(error)
             }
@@ -116,5 +128,29 @@ extension WeatherViewController: UICollectionViewDelegateFlowLayout {
 
 extension WeatherViewController: UICollectionViewDelegate {}
 
-extension WeatherViewController: UITextFieldDelegate {}
+extension WeatherViewController: UITextFieldDelegate {
+    
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        guard let text = textField.text else {return}
+//        getCoordinates(zipCode: text)
+//        loadData()
+//    }
+    
+//    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+//        guard let text = textField.text else {return}
+//        getCoordinates(zipCode: text)
+//        loadData()
+//    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        //textField code
+
+        textField.resignFirstResponder()  //if desired
+        guard let text = textField.text else {return false}
+        getCoordinates(zipCode: text)
+        loadData()
+        return true
+    }
+}
 

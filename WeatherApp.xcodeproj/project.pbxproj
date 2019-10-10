@@ -103,11 +103,8 @@
 				FC7775CC234E64660063B69A /* Secret */,
 				FC7775D1234E64980063B69A /* Models */,
 				FC7775E7234E78DE0063B69A /* Controllers */,
-				548CE053234D33B500B5177D /* SceneDelegate.swift */,
-				548CE051234D33B500B5177D /* AppDelegate.swift */,
+				FC77760B234FCBB60063B69A /* Supporting Files */,
 				548CE057234D33B500B5177D /* Main.storyboard */,
-				548CE05C234D33B600B5177D /* LaunchScreen.storyboard */,
-				548CE067234D340700B5177D /* Assets.xcassets */,
 				548CE05F234D33B600B5177D /* Info.plist */,
 			);
 			path = WeatherApp;
@@ -158,6 +155,17 @@
 				FC7775EA234E79550063B69A /* WeatherCollectionViewCell.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FC77760B234FCBB60063B69A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				548CE053234D33B500B5177D /* SceneDelegate.swift */,
+				548CE051234D33B500B5177D /* AppDelegate.swift */,
+				548CE05C234D33B600B5177D /* LaunchScreen.storyboard */,
+				548CE067234D340700B5177D /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
