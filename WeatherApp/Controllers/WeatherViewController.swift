@@ -22,6 +22,12 @@ class WeatherViewController: UIViewController {
     
     var long: Double?
     
+    var cityName: String? {
+        didSet{
+            cityForecastLabel.text = "Forecast for \(self.cityName ?? "")"
+        }
+    }
+    
     let cellSpacing: CGFloat = 5.0
     
     //MARK: - Outlets
@@ -69,6 +75,17 @@ class WeatherViewController: UIViewController {
             }
         }
     }
+    
+    private func getName(zipCode: String) {
+        ZipCodeHelper.getLocationName(from: zipCode) { (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let name):
+                self.cityName = name
+            }
+        }
+    }
 
 }
 
@@ -81,7 +98,7 @@ extension WeatherViewController: UICollectionViewDataSource {
         guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as? WeatherCollectionViewCell else {return UICollectionViewCell()}
         
         let oneDay = weather?.daily.data[indexPath.row]
-        let image = WeatherAPIClient.manager.returnPictureBasedOnIcon(icon: oneDay?.icon ?? "")
+        let image = oneDay?.returnPictureBasedOnIcon(icon: oneDay?.icon ?? "")
         cell.iconImageView.image = image
         cell.hiTempLabel.text = "High: \(oneDay?.temperatureHigh ?? 0)"
         cell.loTempLabel.text = "Low: \(oneDay?.temperatureLow ?? 0)"
@@ -95,6 +112,7 @@ extension WeatherViewController: UICollectionViewDataSource {
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let detailVC = storyBoard.instantiateViewController(withIdentifier: "detailVC") as? WeatherDetailViewController else {return}
         detailVC.oneWeather = oneDay
+        detailVC.cityName = self.cityName
         self.navigationController?.pushViewController(detailVC, animated: true)
         
     }
@@ -138,6 +156,7 @@ extension WeatherViewController: UITextFieldDelegate {
         textField.resignFirstResponder()  //if desired
         guard let text = textField.text else {return false}
         getCoordinates(zipCode: text)
+        getName(zipCode: text)
         loadData()
         return true
     }

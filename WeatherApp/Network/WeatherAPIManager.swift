@@ -37,33 +37,6 @@ struct WeatherAPIClient {
         
     }
     
-    func returnPictureBasedOnIcon(icon:String) -> UIImage {
-               switch icon {
-               case "rain":
-                   return UIImage(named: "rain")!
-               case "cloudy":
-                   return UIImage(named: "cloudy")!
-               case "partly-cloudy-night":
-                   return UIImage(named: "pcloudyn")!
-               case "clear-day":
-                   return UIImage(named: "clear")!
-               case "clear-night":
-                   return UIImage(named:"clearn")!
-               case "partly-cloudy-day":
-                   return UIImage(named:"pcloudy" )!
-               case "snow":
-                   return UIImage(named: "snow")!
-               case "sleet":
-                   return UIImage(named: "sleet")!
-               case "wind":
-                   return UIImage(named: "wind")!
-               case "fog":
-                   return UIImage(named:"fog")!
-               default:
-                   return UIImage(named: "image")!
-               }
-           }
-    
     
     private init() {}
     

@@ -37,6 +37,25 @@ class ZipCodeHelper {
             }
         }
     }
+    
+    static func getLocationName(from zipCode: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
+        let geocoder = CLGeocoder()
+        DispatchQueue.global(qos: .userInitiated).async {
+            geocoder.geocodeAddressString(zipCode){(placemarks, error) -> Void in
+                DispatchQueue.main.async {
+                    if let placemark = placemarks?.first, let name = placemark.locality {
+                        completionHandler(.success(name))
+                    } else {
+                        let locationError: LocationFetchingError
+                        if let error = error {
+                            locationError = .error(error)
+                        } else {
+                            locationError = .noErrorMessage
+                        }
+                        completionHandler(.failure(locationError))                    }
+                }
+                
+            }
+        }
+    }
 }
-
-
