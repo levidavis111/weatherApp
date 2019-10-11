@@ -133,7 +133,11 @@
                                 <items>
                                     <barButtonItem title="Search" image="magnifyingglass" catalog="system" id="Pbs-1Q-2LD"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="I4P-kt-tP7"/>
-                                    <barButtonItem title="Favorite" image="star" catalog="system" id="06B-BX-wf2"/>
+                                    <barButtonItem title="Favorite" image="star" catalog="system" id="06B-BX-wf2">
+                                        <connections>
+                                            <action selector="favoriteButtonPressed:" destination="BYZ-38-t0r" id="NeU-qm-tQD"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

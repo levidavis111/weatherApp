@@ -28,6 +28,8 @@ class WeatherViewController: UIViewController {
         }
     }
     
+    var textString: String?
+    
     let cellSpacing: CGFloat = 5.0
     
     //MARK: - Outlets
@@ -44,16 +46,27 @@ class WeatherViewController: UIViewController {
 //        loadData()
     }
     
-    //MARK: - Private funtions
+  //MARK: - IBActions
+    
+    @IBAction func favoriteButtonPressed(_ sender: UIBarButtonItem) {
+        
+         let favoriteVC = FavoritesViewController()
+        favoriteVC.cityName = self.cityName
+               self.navigationController?.pushViewController(favoriteVC, animated: true)
+    }
     
     private func setDelegates() {
         weatherCollectionView.delegate = self
         weatherCollectionView.dataSource = self
         textFieldOutlet.delegate = self
     }
+    
+      //MARK: - Private funtions
 
     private func loadData() {
-        WeatherAPIClient.manager.getWeather(lat: self.lat ?? 0, long: self.long ?? 0) { (result) in
+        guard let lat = lat,
+            let long = long else {print("invalid zip"); return}
+        WeatherAPIClient.manager.getWeather(lat: lat, long: long) { (result) in
             switch result {
             case .failure(let error):
                 print(error)
@@ -70,6 +83,8 @@ class WeatherViewController: UIViewController {
                 print(lat, long)
                 self.lat = lat
                 self.long = long
+                guard let text = self.textString else {return}
+                self.getName(zipCode: text)
             case let .failure(error):
                 print(error)
             }
@@ -77,6 +92,7 @@ class WeatherViewController: UIViewController {
     }
     
     private func getName(zipCode: String) {
+        
         ZipCodeHelper.getLocationName(from: zipCode) { (result) in
             switch result {
             case .failure(let error):
@@ -84,6 +100,7 @@ class WeatherViewController: UIViewController {
                 return
             case .success(let name):
                 self.cityName = name
+                self.loadData()
             }
         }
     }
@@ -156,9 +173,11 @@ extension WeatherViewController: UITextFieldDelegate {
 
         textField.resignFirstResponder()  //if desired
         guard let text = textField.text else {return false}
+        guard text.count == 5 else {return false}
         getCoordinates(zipCode: text)
-        getName(zipCode: text)
-        loadData()
+//        getName(zipCode: text)
+        self.textString = text
+       // loadData()
         return true
     }
 }

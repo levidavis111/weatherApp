@@ -11,7 +11,7 @@ import UIKit
 class FavoritesView: UIView {
 
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView()
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.frame = bounds
         collectionView.register(FavoritesCollectionViewCell.self, forCellWithReuseIdentifier: "favoriteCell")
         return collectionView

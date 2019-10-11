@@ -12,7 +12,7 @@ class FavoritesViewController: UIViewController {
     
     var photos = [Photo]() {
         didSet {
-            favoritesCollectionView.reloadData()
+            favoritesView.collectionView.reloadData()
         }
     }
     
@@ -21,25 +21,31 @@ class FavoritesViewController: UIViewController {
     let cellSpacing: CGFloat = 5.0
     
     var favoritesView = FavoritesView()
-    lazy var favoritesCollectionView = favoritesView.collectionView
+   
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
+        setDelegates()
         loadData()
         // Do any additional setup after loading the view.
     }
     
     private func addSubviews() {
-        self.view.addSubview(favoritesCollectionView)
+        self.view.addSubview(favoritesView.collectionView)
     }
     
-    private func setDelegates() {}
+    private func setDelegates() {
+        favoritesView.collectionView.dataSource = self
+        favoritesView.collectionView.delegate = self
+    }
 
     private func loadData() {
-        PhotoAPIClient.manager.getPhotos(city: cityName) { (result) in
+        guard let cityName = cityName else {return}
+        
+        PhotoAPIClient.manager.getPhotos(city: cityName.replacingOccurrences(of: " ", with: "")) { (result) in
             switch result {
             case .failure(let error):
                 print(error)
@@ -57,7 +63,20 @@ extension FavoritesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let cell = favoritesView.collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath) as? FavoritesCollectionViewCell else {return UICollectionViewCell()}
+        let urlStr = photos[indexPath.row].webformatURL
+        ImageManager.manager.getImage(urlStr: urlStr) { (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let image):
+                DispatchQueue.main.async {
+                    cell.imageView.image = image
+                }
+            }
+        }
+        
+        return cell
     }
     
     

@@ -32,6 +32,7 @@
 		FC77765323510E4A0063B69A /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77765223510E4A0063B69A /* FavoritesCollectionViewCell.swift */; };
 		FC7776552351119D0063B69A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7776542351119D0063B69A /* Photo.swift */; };
 		FC777657235111B30063B69A /* PhotoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC777656235111B30063B69A /* PhotoAPIManager.swift */; };
+		FC77765923512DE30063B69A /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77765823512DE30063B69A /* ImageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		FC77765223510E4A0063B69A /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC7776542351119D0063B69A /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		FC777656235111B30063B69A /* PhotoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAPIManager.swift; sourceTree = "<group>"; };
+		FC77765823512DE30063B69A /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				FC7775C9234E64330063B69A /* NetworkManager.swift */,
 				FC7775D2234E6B700063B69A /* WeatherAPIManager.swift */,
 				FC777656235111B30063B69A /* PhotoAPIManager.swift */,
+				FC77765823512DE30063B69A /* ImageManager.swift */,
 				FC7775CF234E64860063B69A /* AppError.swift */,
 			);
 			path = Network;
@@ -289,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC77765323510E4A0063B69A /* FavoritesCollectionViewCell.swift in Sources */,
+				FC77765923512DE30063B69A /* ImageManager.swift in Sources */,
 				FC777610234FD63C0063B69A /* FavoritesViewController.swift in Sources */,
 				FC7775D3234E6B700063B69A /* WeatherAPIManager.swift in Sources */,
 				FC7775E9234E79410063B69A /* WeatherViewController.swift in Sources */,
