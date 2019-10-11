@@ -10,12 +10,26 @@ import UIKit
 
 class FavoritesView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView()
+        collectionView.frame = bounds
+        collectionView.register(FavoritesCollectionViewCell.self, forCellWithReuseIdentifier: "favoriteCell")
+        return collectionView
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: UIScreen.main.bounds)
+        commonInit()
     }
-    */
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    private func commonInit() {
+        viewSetup()
+    }
+    
+    private func viewSetup() {
+        addSubview(collectionView)
+    }
 }

@@ -81,6 +81,7 @@ class WeatherViewController: UIViewController {
             switch result {
             case .failure(let error):
                 print(error)
+                return
             case .success(let name):
                 self.cityName = name
             }
