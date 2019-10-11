@@ -33,6 +33,7 @@ class WeatherDetailViewController: UIViewController {
     private func setupView() {
         detailImageView.image = UIImage(named: oneWeather.icon)
         forecastLabel.text = oneWeather.summary
+        sunriseLabel.text = "Sunrise: \(oneWeather.getDateFromTime(time: oneWeather.sunriseTime).components(separatedBy: " ")[1])"
     }
 
 }

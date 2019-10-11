@@ -17,6 +17,7 @@ struct Weather: Codable {
     static func getWeather(from jsonData: Data) throws -> Weather? {
         let response = try JSONDecoder().decode(Weather.self, from: jsonData)
         return response
+        
     }
     
 }
@@ -44,4 +45,9 @@ struct DailyDatum: Codable {
     let temperatureHigh: Double
     let temperatureLow: Double
    
+    func getDateFromTime(time:Int) -> String {
+           let date = NSDate(timeIntervalSince1970: Double(time))
+        return date.description
+       }
+    
 }

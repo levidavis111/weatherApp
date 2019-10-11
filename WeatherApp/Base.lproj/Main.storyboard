@@ -180,73 +180,68 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NaQ-x0-knW">
-                                <rect key="frame" x="107" y="360.5" width="200" height="166"/>
+                                <rect key="frame" x="7" y="360.5" width="400" height="166"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Temp:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMB-Ti-3wW">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Temp:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMB-Ti-3wW">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="JcN-wh-YGx"/>
+                                            <constraint firstAttribute="width" constant="400" id="JcN-wh-YGx"/>
                                             <constraint firstAttribute="height" constant="21" id="XzU-gw-ioV"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Low Temp:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5x7-Fn-mWu">
-                                        <rect key="frame" x="0.0" y="29" width="200" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Low Temp:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5x7-Fn-mWu">
+                                        <rect key="frame" x="0.0" y="29" width="400" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="jSB-Kg-Kqa"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="l1y-Y6-IGU"/>
-                                            <constraint firstAttribute="width" constant="200" id="vky-12-ufV"/>
+                                            <constraint firstAttribute="width" constant="400" id="vky-12-ufV"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="ziK-gS-q5m"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunrise:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYu-NN-qRz">
-                                        <rect key="frame" x="0.0" y="58" width="200" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunrise:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYu-NN-qRz">
+                                        <rect key="frame" x="0.0" y="58" width="400" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="EVA-cG-n65"/>
                                             <constraint firstAttribute="height" constant="21" id="Qje-MJ-5sj"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="SaV-pK-p4y"/>
-                                            <constraint firstAttribute="width" constant="200" id="vRf-uY-GuE"/>
+                                            <constraint firstAttribute="width" constant="400" id="vRf-uY-GuE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAK-E8-hVt">
-                                        <rect key="frame" x="0.0" y="87" width="200" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAK-E8-hVt">
+                                        <rect key="frame" x="0.0" y="87" width="400" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="7fu-hw-Is2"/>
-                                            <constraint firstAttribute="width" constant="200" id="HEi-Et-894"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="SFI-bO-sjV"/>
+                                            <constraint firstAttribute="width" constant="400" id="HEi-Et-894"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="nw1-sY-NAD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Speed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccT-Mi-T9i">
-                                        <rect key="frame" x="0.0" y="116" width="200" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Speed:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccT-Mi-T9i">
+                                        <rect key="frame" x="0.0" y="116" width="400" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="4HA-XW-eUJ"/>
-                                            <constraint firstAttribute="width" constant="200" id="E2z-Hf-YrR"/>
+                                            <constraint firstAttribute="width" constant="400" id="E2z-Hf-YrR"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Era-TU-fsJ"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="H2B-qP-YHx"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inches of Precipitation:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHW-vQ-87u">
-                                        <rect key="frame" x="0.0" y="145" width="200" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inches of Precipitation:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHW-vQ-87u">
+                                        <rect key="frame" x="0.0" y="145" width="400" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="4pH-pO-mlb"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="l07-nb-4r9"/>
                                             <constraint firstAttribute="height" constant="21" id="vCZ-Fb-R0h"/>
-                                            <constraint firstAttribute="width" constant="200" id="z6j-gf-ZIT"/>
+                                            <constraint firstAttribute="width" constant="400" id="z6j-gf-ZIT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -254,7 +249,7 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="R6L-dP-RhJ"/>
+                                    <constraint firstAttribute="width" constant="400" id="R6L-dP-RhJ"/>
                                     <constraint firstAttribute="height" constant="166" id="iKN-FV-kwj"/>
                                 </constraints>
                             </stackView>

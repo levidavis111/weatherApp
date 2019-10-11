@@ -81,7 +81,8 @@ extension WeatherViewController: UICollectionViewDataSource {
         guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as? WeatherCollectionViewCell else {return UICollectionViewCell()}
         
         let oneDay = weather?.daily.data[indexPath.row]
-        cell.iconImageView.image = UIImage(named: oneDay?.icon.replacingOccurrences(of: "-", with: "_") ?? "")
+        let image = WeatherAPIClient.manager.returnPictureBasedOnIcon(icon: oneDay?.icon ?? "")
+        cell.iconImageView.image = image
         cell.hiTempLabel.text = "High: \(oneDay?.temperatureHigh ?? 0)"
         cell.loTempLabel.text = "Low: \(oneDay?.temperatureLow ?? 0)"
         cell.dateLabel.text = "Date: \(Date())"
@@ -129,18 +130,6 @@ extension WeatherViewController: UICollectionViewDelegateFlowLayout {
 extension WeatherViewController: UICollectionViewDelegate {}
 
 extension WeatherViewController: UITextFieldDelegate {
-    
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        guard let text = textField.text else {return}
-//        getCoordinates(zipCode: text)
-//        loadData()
-//    }
-    
-//    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-//        guard let text = textField.text else {return}
-//        getCoordinates(zipCode: text)
-//        loadData()
-//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
