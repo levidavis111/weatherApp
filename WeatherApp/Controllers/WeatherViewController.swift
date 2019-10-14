@@ -43,7 +43,6 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegates()
-//        loadData()
     }
     
   //MARK: - IBActions
@@ -69,6 +68,7 @@ class WeatherViewController: UIViewController {
         WeatherAPIClient.manager.getWeather(lat: lat, long: long) { (result) in
             switch result {
             case .failure(let error):
+                self.errorAlert()
                 print(error)
             case .success(let weather):
                 self.weather = weather
@@ -86,6 +86,7 @@ class WeatherViewController: UIViewController {
                 guard let text = self.textString else {return}
                 self.getName(zipCode: text)
             case let .failure(error):
+                self.errorAlert()
                 print(error)
             }
         }
@@ -96,6 +97,7 @@ class WeatherViewController: UIViewController {
         ZipCodeHelper.getLocationName(from: zipCode) { (result) in
             switch result {
             case .failure(let error):
+                self.errorAlert()
                 print(error)
                 return
             case .success(let name):
@@ -103,6 +105,12 @@ class WeatherViewController: UIViewController {
                 self.loadData()
             }
         }
+    }
+    
+    private func errorAlert() {
+        let alert = UIAlertController(title: nil, message: "Error", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
 }
@@ -117,10 +125,14 @@ extension WeatherViewController: UICollectionViewDataSource {
         
         let oneDay = weather?.daily.data[indexPath.row]
         let image = oneDay?.returnPictureBasedOnIcon(icon: oneDay?.icon ?? "")
+        let month = oneDay?.getDateFromTime(time: oneDay?.time ?? 0).components(separatedBy: " ")[0].components(separatedBy: "-")[1]
+        let day = oneDay?.getDateFromTime(time: oneDay?.time ?? 0).components(separatedBy: " ")[0].components(separatedBy: "-")[2]
+        
+        
         cell.iconImageView.image = image
         cell.hiTempLabel.text = "High: \(oneDay?.temperatureHigh ?? 0)"
         cell.loTempLabel.text = "Low: \(oneDay?.temperatureLow ?? 0)"
-        cell.dateLabel.text = "Date: \(Date())"
+        cell.dateLabel.text = "\(month ?? "")-\(day ?? "")"
         
         return cell
     }
@@ -172,8 +184,8 @@ extension WeatherViewController: UITextFieldDelegate {
         //textField code
 
         textField.resignFirstResponder()  //if desired
-        guard let text = textField.text else {return false}
-        guard text.count == 5 else {return false}
+        guard let text = textField.text else {errorAlert(); return false}
+        guard text.count == 5 else { errorAlert(); return false}
         getCoordinates(zipCode: text)
 //        getName(zipCode: text)
         self.textString = text

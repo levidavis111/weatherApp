@@ -37,7 +37,7 @@ struct Daily: Codable {
 
 
 struct DailyDatum: Codable {
-    
+    let time: Int
     let summary: String
     let icon: String
     let sunriseTime, sunsetTime: Int

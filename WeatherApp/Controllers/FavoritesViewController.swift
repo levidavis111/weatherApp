@@ -43,7 +43,7 @@ class FavoritesViewController: UIViewController {
     }
 
     private func loadData() {
-        guard let cityName = cityName else {return}
+        guard let cityName = cityName else {self.errorAlert(); return}
         
         PhotoAPIClient.manager.getPhotos(city: cityName.replacingOccurrences(of: " ", with: "")) { (result) in
             switch result {
@@ -53,6 +53,12 @@ class FavoritesViewController: UIViewController {
                 self.photos = photos
             }
         }
+    }
+    
+    private func errorAlert() {
+        let alert = UIAlertController(title: nil, message: "Error", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
 }
@@ -68,6 +74,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
         ImageManager.manager.getImage(urlStr: urlStr) { (result) in
             switch result {
             case .failure(let error):
+                self.errorAlert()
                 print(error)
             case .success(let image):
                 DispatchQueue.main.async {

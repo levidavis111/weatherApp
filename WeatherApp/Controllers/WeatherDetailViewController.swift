@@ -35,6 +35,8 @@ class WeatherDetailViewController: UIViewController {
 
     private func setupView() {
         let image = oneWeather.returnPictureBasedOnIcon(icon: oneWeather.icon)
+        let fortmattedPrecipitation = String(format: "%.2f", (oneWeather.precipProbability * 100))
+//        let doubleStr = String(format: "%.2f", myDouble) // "3.14"
         detailImageView.image = image
         locationLabel.text = "Forcast for: \(cityName ?? "")"
         forecastLabel.text = oneWeather.summary
@@ -43,7 +45,7 @@ class WeatherDetailViewController: UIViewController {
         sunriseLabel.text = "Sunrise: \(oneWeather.getDateFromTime(time: oneWeather.sunriseTime).components(separatedBy: " ")[1])"
         sunsetLabel.text = "Sunset: \(oneWeather.getDateFromTime(time: oneWeather.sunsetTime).components(separatedBy: " ")[1])"
         windSpeedLabel.text = "Wind Speed \(oneWeather.windsSpeed ?? 0) mph"
-        precipitationLabel.text = "\(oneWeather.precipProbability)% chance of rain"
+        precipitationLabel.text = "\(fortmattedPrecipitation)% chance of rain"
         
     }
 
