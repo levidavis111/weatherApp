@@ -40,8 +40,10 @@ class WeatherDetailViewController: UIViewController {
     private func setupView() {
         let image = oneWeather.returnPictureBasedOnIcon(icon: oneWeather.icon)
         let fortmattedPrecipitation = String(format: "%.0f", (oneWeather.precipProbability * 100))
-        let sunrise = oneWeather.getDateFromTime(time: oneWeather.sunriseTime).components(separatedBy: " ")[1]
-        let sunset = oneWeather.getDateFromTime(time: oneWeather.sunsetTime).components(separatedBy: " ")[1]
+        let rawSunrise = oneWeather.getDateFromTime(time: oneWeather.sunriseTime).components(separatedBy: " ")
+        let sunrise = "\(rawSunrise[4]) \(rawSunrise[5]) EDT"
+        let rawSunset = oneWeather.getDateFromTime(time: oneWeather.sunsetTime).components(separatedBy: " ")
+        let sunset = "\(rawSunset[4]) \(rawSunset[5]) EDT"
         
         detailImageView.image = image
         locationLabel.text = "Forcast for: \(cityName ?? "")"

@@ -48,8 +48,21 @@ struct DailyDatum: Codable {
     let windsSpeed: Double?
    
     func getDateFromTime(time:Int) -> String {
-           let date = NSDate(timeIntervalSince1970: Double(time))
-        return date.description
+//        let date = Date(timeIntervalSince1970: timeResult)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
+//        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+//        dateFormatter.timeZone = .current
+//        let localDate = dateFormatter.string(from: date)
+        
+        
+        let date = NSDate(timeIntervalSince1970: Double(time))
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.medium
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeZone = .current
+        let localDate = dateFormatter.string(from: date as Date)
+        return localDate
        }
     
     func returnPictureBasedOnIcon(icon:String) -> UIImage {

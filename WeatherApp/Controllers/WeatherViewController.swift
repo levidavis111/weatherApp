@@ -110,13 +110,13 @@ extension WeatherViewController: UICollectionViewDataSource {
         
         let oneDay = weather?.daily.data[indexPath.row]
         let image = oneDay?.returnPictureBasedOnIcon(icon: oneDay?.icon ?? "")
-        let month = oneDay?.getDateFromTime(time: oneDay?.time ?? 0).components(separatedBy: " ")[0].components(separatedBy: "-")[1]
-        let day = oneDay?.getDateFromTime(time: oneDay?.time ?? 0).components(separatedBy: " ")[0].components(separatedBy: "-")[2]
-        
+        let rawDate = oneDay?.getDateFromTime(time: oneDay?.time ?? 0).components(separatedBy: " ")
+        let date = "\(rawDate?[0] ?? ""). \(rawDate?[1] ?? "") ".replacingOccurrences(of: ",", with: "")
+
         cell.iconImageView.image = image
         cell.hiTempLabel.text = "High: \(oneDay?.temperatureHigh ?? 0)"
         cell.loTempLabel.text = "Low: \(oneDay?.temperatureLow ?? 0)"
-        cell.dateLabel.text = "Date: \(month ?? "")-\(day ?? "")"
+        cell.dateLabel.text = "\(date)"
         
         return cell
     }
