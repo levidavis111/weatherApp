@@ -45,23 +45,23 @@ class WeatherViewController: UIViewController {
         setDelegates()
     }
     
-  //MARK: - IBActions
+    //MARK: - IBActions
     
     @IBAction func favoriteButtonPressed(_ sender: UIBarButtonItem) {
         
-         let favoriteVC = FavoritesViewController()
+        let favoriteVC = FavoritesViewController()
         favoriteVC.cityName = self.cityName
-               self.navigationController?.pushViewController(favoriteVC, animated: true)
+        self.navigationController?.pushViewController(favoriteVC, animated: true)
     }
+    
+    //MARK: - Private funtions
     
     private func setDelegates() {
-        weatherCollectionView.delegate = self
-        weatherCollectionView.dataSource = self
-        textFieldOutlet.delegate = self
-    }
+           weatherCollectionView.delegate = self
+           weatherCollectionView.dataSource = self
+           textFieldOutlet.delegate = self
+       }
     
-      //MARK: - Private funtions
-
     private func loadData() {
         guard let lat = lat,
             let long = long else {print("invalid zip"); return}
@@ -79,30 +79,15 @@ class WeatherViewController: UIViewController {
     private func getCoordinates(zipCode: String) {
         ZipCodeHelper.getLatLong(fromZipCode: zipCode) { (result) in
             switch result {
-            case let .success((lat, long)):
+            case let .success((lat, long, name)):
                 print(lat, long)
+                self.cityName = name
                 self.lat = lat
                 self.long = long
-                guard let text = self.textString else {return}
-                self.getName(zipCode: text)
+                self.loadData()
             case let .failure(error):
                 self.errorAlert()
                 print(error)
-            }
-        }
-    }
-    
-    private func getName(zipCode: String) {
-        
-        ZipCodeHelper.getLocationName(from: zipCode) { (result) in
-            switch result {
-            case .failure(let error):
-                self.errorAlert()
-                print(error)
-                return
-            case .success(let name):
-                self.cityName = name
-                self.loadData()
             }
         }
     }
@@ -112,7 +97,7 @@ class WeatherViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
 }
 
 extension WeatherViewController: UICollectionViewDataSource {
@@ -128,11 +113,10 @@ extension WeatherViewController: UICollectionViewDataSource {
         let month = oneDay?.getDateFromTime(time: oneDay?.time ?? 0).components(separatedBy: " ")[0].components(separatedBy: "-")[1]
         let day = oneDay?.getDateFromTime(time: oneDay?.time ?? 0).components(separatedBy: " ")[0].components(separatedBy: "-")[2]
         
-        
         cell.iconImageView.image = image
         cell.hiTempLabel.text = "High: \(oneDay?.temperatureHigh ?? 0)"
         cell.loTempLabel.text = "Low: \(oneDay?.temperatureLow ?? 0)"
-        cell.dateLabel.text = "\(month ?? "")-\(day ?? "")"
+        cell.dateLabel.text = "Date: \(month ?? "")-\(day ?? "")"
         
         return cell
     }
@@ -180,16 +164,12 @@ extension WeatherViewController: UICollectionViewDelegate {}
 extension WeatherViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-
-        //textField code
-
+        
         textField.resignFirstResponder()  //if desired
         guard let text = textField.text else {errorAlert(); return false}
         guard text.count == 5 else { errorAlert(); return false}
         getCoordinates(zipCode: text)
-//        getName(zipCode: text)
         self.textString = text
-       // loadData()
         return true
     }
 }

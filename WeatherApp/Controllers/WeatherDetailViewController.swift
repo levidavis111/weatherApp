@@ -10,9 +10,13 @@ import UIKit
 
 class WeatherDetailViewController: UIViewController {
     
+    //MARK: - Local variables
+    
     var oneWeather: DailyDatum!
     
     var cityName: String!
+    
+    //MARK: - Outlets
 
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
@@ -24,26 +28,28 @@ class WeatherDetailViewController: UIViewController {
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var precipitationLabel: UILabel!
     
+    //MARK: - Override functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        // Do any additional setup after loading the view.
     }
     
-    
+    //MARK: - Private functions
 
     private func setupView() {
         let image = oneWeather.returnPictureBasedOnIcon(icon: oneWeather.icon)
-        let fortmattedPrecipitation = String(format: "%.2f", (oneWeather.precipProbability * 100))
-//        let doubleStr = String(format: "%.2f", myDouble) // "3.14"
+        let fortmattedPrecipitation = String(format: "%.0f", (oneWeather.precipProbability * 100))
+        let sunrise = oneWeather.getDateFromTime(time: oneWeather.sunriseTime).components(separatedBy: " ")[1]
+        let sunset = oneWeather.getDateFromTime(time: oneWeather.sunsetTime).components(separatedBy: " ")[1]
+        
         detailImageView.image = image
         locationLabel.text = "Forcast for: \(cityName ?? "")"
         forecastLabel.text = oneWeather.summary
         highTempLabel.text = "High: \(oneWeather.temperatureHigh)"
         lowTempLabel.text = "Low: \(oneWeather.temperatureLow)"
-        sunriseLabel.text = "Sunrise: \(oneWeather.getDateFromTime(time: oneWeather.sunriseTime).components(separatedBy: " ")[1])"
-        sunsetLabel.text = "Sunset: \(oneWeather.getDateFromTime(time: oneWeather.sunsetTime).components(separatedBy: " ")[1])"
+        sunriseLabel.text = "Sunrise: \(sunrise)"
+        sunsetLabel.text = "Sunset: \(sunset)"
         windSpeedLabel.text = "Wind Speed \(oneWeather.windsSpeed ?? 0) mph"
         precipitationLabel.text = "\(fortmattedPrecipitation)% chance of rain"
         

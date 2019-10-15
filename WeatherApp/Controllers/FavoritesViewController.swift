@@ -10,6 +10,8 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
+    //MARK: - Local variable
+    
     var photos = [Photo]() {
         didSet {
             favoritesView.collectionView.reloadData()
@@ -22,8 +24,7 @@ class FavoritesViewController: UIViewController {
     
     var favoritesView = FavoritesView()
    
-    
-    
+    //MARK: - Override functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,8 @@ class FavoritesViewController: UIViewController {
         loadData()
         // Do any additional setup after loading the view.
     }
+    
+    //MARK: - Private functions
     
     private func addSubviews() {
         self.view.addSubview(favoritesView.collectionView)
@@ -51,6 +54,9 @@ class FavoritesViewController: UIViewController {
                 print(error)
             case .success(let photos):
                 self.photos = photos
+                if self.photos.count == 0 {
+                    self.errorAlert()
+                }
             }
         }
     }
@@ -70,7 +76,9 @@ extension FavoritesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = favoritesView.collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath) as? FavoritesCollectionViewCell else {return UICollectionViewCell()}
+        
         let urlStr = photos[indexPath.row].webformatURL
+        
         ImageManager.manager.getImage(urlStr: urlStr) { (result) in
             switch result {
             case .failure(let error):
@@ -86,11 +94,11 @@ extension FavoritesViewController: UICollectionViewDataSource {
         return cell
     }
     
-    
 }
 
 extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let numCells: CGFloat = 1
         let numSpaces: CGFloat = numCells + 1
         
