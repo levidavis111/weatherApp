@@ -13,7 +13,7 @@ class WeatherAppTests: XCTestCase {
 
     
     func testModelFromJSON() {
-        guard let path = Bundle.main.path(forResource: "Weather", ofType: "json") else {return}
+        guard let path = Bundle.main.path(forResource: "Weather", ofType: "json") else {XCTFail(); return}
         let urlFromFile = URL(fileURLWithPath: path)
         do {
            let data = try Data(contentsOf: urlFromFile)

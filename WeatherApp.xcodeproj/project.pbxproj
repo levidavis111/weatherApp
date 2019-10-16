@@ -24,11 +24,8 @@
 		FC7775ED234E86020063B69A /* Weather.json in Resources */ = {isa = PBXBuildFile; fileRef = FC7775EC234E86020063B69A /* Weather.json */; };
 		FC7775EE234E86020063B69A /* Weather.json in Resources */ = {isa = PBXBuildFile; fileRef = FC7775EC234E86020063B69A /* Weather.json */; };
 		FC777609234FBBEE0063B69A /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC777608234FBBEE0063B69A /* WeatherDetailViewController.swift */; };
-		FC77760A234FBBEE0063B69A /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC777608234FBBEE0063B69A /* WeatherDetailViewController.swift */; };
 		FC77760D234FD6100063B69A /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77760C234FD6100063B69A /* FavoritesView.swift */; };
-		FC77760E234FD6100063B69A /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77760C234FD6100063B69A /* FavoritesView.swift */; };
 		FC777610234FD63C0063B69A /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77760F234FD63C0063B69A /* FavoritesViewController.swift */; };
-		FC777611234FD63C0063B69A /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77760F234FD63C0063B69A /* FavoritesViewController.swift */; };
 		FC77765323510E4A0063B69A /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77765223510E4A0063B69A /* FavoritesCollectionViewCell.swift */; };
 		FC7776552351119D0063B69A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7776542351119D0063B69A /* Photo.swift */; };
 		FC777657235111B30063B69A /* PhotoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC777656235111B30063B69A /* PhotoAPIManager.swift */; };
@@ -315,10 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC77760A234FBBEE0063B69A /* WeatherDetailViewController.swift in Sources */,
 				FC7775DB234E6DAC0063B69A /* WeatherAppTests.swift in Sources */,
-				FC777611234FD63C0063B69A /* FavoritesViewController.swift in Sources */,
-				FC77760E234FD6100063B69A /* FavoritesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
