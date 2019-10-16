@@ -13,9 +13,9 @@ struct Weather: Codable {
 
     let daily: Daily
     
-    static func getWeather(from jsonData: Data) throws -> Weather? {
+    static func getWeather(from jsonData: Data) throws -> [DailyDatum]? {
         let response = try JSONDecoder().decode(Weather.self, from: jsonData)
-        return response
+        return response.daily.data
         
     }
     

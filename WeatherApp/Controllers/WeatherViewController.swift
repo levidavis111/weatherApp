@@ -12,7 +12,7 @@ class WeatherViewController: UIViewController {
     
     //MARK: - Local variables
     
-    var weather: Weather? {
+    var weather = [DailyDatum]() {
         didSet {
             weatherCollectionView.reloadData()
         }
@@ -102,27 +102,27 @@ class WeatherViewController: UIViewController {
 
 extension WeatherViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return weather?.daily.data.count ?? 0
+        return weather.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as? WeatherCollectionViewCell else {return UICollectionViewCell()}
         
-        let oneDay = weather?.daily.data[indexPath.row]
-        let image = oneDay?.returnPictureBasedOnIcon(icon: oneDay?.icon ?? "")
-        let rawDate = oneDay?.getDateFromTime(time: oneDay?.time ?? 0).components(separatedBy: " ")
-        let date = "\(rawDate?[0] ?? ""). \(rawDate?[1] ?? "") ".replacingOccurrences(of: ",", with: "")
+        let oneDay = weather[indexPath.row]
+        let image = oneDay.returnPictureBasedOnIcon(icon: oneDay.icon)
+        let rawDate = oneDay.getDateFromTime(time: oneDay.time).components(separatedBy: " ")
+        let date = "\(rawDate[0]). \(rawDate[1]) ".replacingOccurrences(of: ",", with: "")
 
         cell.iconImageView.image = image
-        cell.hiTempLabel.text = "High: \(oneDay?.temperatureHigh ?? 0)"
-        cell.loTempLabel.text = "Low: \(oneDay?.temperatureLow ?? 0)"
+        cell.hiTempLabel.text = "High: \(oneDay.temperatureHigh)"
+        cell.loTempLabel.text = "Low: \(oneDay.temperatureLow)"
         cell.dateLabel.text = "\(date)"
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let oneDay = weather?.daily.data[indexPath.row]
+        let oneDay = weather[indexPath.row]
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let detailVC = storyBoard.instantiateViewController(withIdentifier: "detailVC") as? WeatherDetailViewController else {return}
         detailVC.oneWeather = oneDay

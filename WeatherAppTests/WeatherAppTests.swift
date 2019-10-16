@@ -18,8 +18,8 @@ class WeatherAppTests: XCTestCase {
         do {
            let data = try Data(contentsOf: urlFromFile)
             guard let weatherData = try Weather.getWeather(from: data) else {return}
-            print(weatherData.daily.data.count)
-            XCTAssert(weatherData.daily.data.count > 0)
+            print(weatherData.count)
+            XCTAssert(weatherData.count > 0)
 
         } catch {
             XCTFail()
