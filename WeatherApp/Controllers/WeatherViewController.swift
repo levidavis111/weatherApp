@@ -32,6 +32,7 @@ class WeatherViewController: UIViewController {
     
     let cellSpacing: CGFloat = 5.0
     
+    
     //MARK: - Outlets
     
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -45,6 +46,7 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         setBackgroundImage()
         setDelegates()
+        loadDefaults()
     }
     
     //MARK: - IBActions
@@ -103,6 +105,14 @@ class WeatherViewController: UIViewController {
         let alert = UIAlertController(title: nil, message: "Error", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func loadDefaults() {
+        if let text = UserDefaults.standard.object(forKey: "searchText") {
+            self.textFieldOutlet.text = text as? String
+        } else {
+            return
+        }
     }
     
 }
@@ -177,6 +187,7 @@ extension WeatherViewController: UITextFieldDelegate {
         guard text.count == 5 else { errorAlert(); return false}
         getCoordinates(zipCode: text)
         self.textString = text
+        UserDefaults.standard.set(text, forKey: "searchText")
         return true
     }
 }
