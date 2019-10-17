@@ -34,6 +34,7 @@ class WeatherViewController: UIViewController {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var cityForecastLabel: UILabel!
     @IBOutlet weak var textFieldOutlet: UITextField!
     @IBOutlet weak var weatherCollectionView: UICollectionView!
@@ -42,6 +43,7 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBackgroundImage()
         setDelegates()
     }
     
@@ -55,6 +57,10 @@ class WeatherViewController: UIViewController {
     }
     
     //MARK: - Private funtions
+    
+    private func setBackgroundImage() {
+        self.backgroundImageView.image = UIImage(named: "background")
+    }
     
     private func setDelegates() {
            weatherCollectionView.delegate = self
@@ -72,6 +78,7 @@ class WeatherViewController: UIViewController {
                 print(error)
             case .success(let weather):
                 self.weather = weather
+                self.weatherCollectionView.isHidden = false
             }
         }
     }

@@ -16,9 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v8t-f9-XIL">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RiA-na-PJ8">
+                                <rect key="frame" x="0.0" y="116" width="414" height="697"/>
+                            </imageView>
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v8t-f9-XIL">
                                 <rect key="frame" x="0.0" y="138" width="414" height="250"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="AJb-xB-Sku"/>
                                 </constraints>
@@ -111,7 +114,7 @@
                                     <constraint firstAttribute="height" constant="21" id="tVK-ZF-NWE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Forecast for:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDm-j9-niM">
@@ -147,11 +150,15 @@
                             <constraint firstItem="v8t-f9-XIL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Aar-Dk-sSm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="v8t-f9-XIL" secondAttribute="trailing" id="LcY-fL-xGc"/>
                             <constraint firstItem="JRq-WA-vHL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MNv-n5-YrZ"/>
+                            <constraint firstItem="JRq-WA-vHL" firstAttribute="top" secondItem="RiA-na-PJ8" secondAttribute="bottom" id="Tfp-b2-Hwg"/>
+                            <constraint firstItem="RiA-na-PJ8" firstAttribute="top" secondItem="kDm-j9-niM" secondAttribute="bottom" id="XJ1-yy-e50"/>
                             <constraint firstItem="v8t-f9-XIL" firstAttribute="top" secondItem="kDm-j9-niM" secondAttribute="bottom" constant="22" id="XWR-Gb-9yE"/>
                             <constraint firstItem="aTc-5h-h5E" firstAttribute="top" secondItem="INU-VH-gOD" secondAttribute="bottom" constant="40" id="fmJ-FY-7ei"/>
                             <constraint firstItem="aTc-5h-h5E" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="opB-oO-QLW"/>
+                            <constraint firstItem="RiA-na-PJ8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qhh-k3-HFP"/>
                             <constraint firstItem="kDm-j9-niM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="rWi-hp-UFq"/>
                             <constraint firstItem="aTc-5h-h5E" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="sU5-Kh-Nmm"/>
+                            <constraint firstItem="RiA-na-PJ8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="v0V-sx-Lp2"/>
                             <constraint firstItem="INU-VH-gOD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="vYw-4s-zaj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JRq-WA-vHL" secondAttribute="bottom" id="vjR-8E-sy3"/>
                         </constraints>
@@ -159,6 +166,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="VlS-D3-Eod"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="RiA-na-PJ8" id="gYI-7b-pyO"/>
                         <outlet property="cityForecastLabel" destination="kDm-j9-niM" id="nni-b4-Y3m"/>
                         <outlet property="textFieldOutlet" destination="aTc-5h-h5E" id="5hE-hl-6Gs"/>
                         <outlet property="weatherCollectionView" destination="v8t-f9-XIL" id="CZV-aw-FWh"/>
