@@ -20,7 +20,7 @@ struct Photo: Codable {
     let previewURL: String
 
     
-    static func getPhotosFromData(from jsonData: Data) throws -> [Photo] {
+    static func getPhotosFromData(from jsonData: Data) throws -> [Photo]? {
         let response = try JSONDecoder().decode(PhotoWrapper.self, from: jsonData)
         return response.hits
     }

@@ -24,9 +24,16 @@ struct PhotoAPIClient {
                 completionHandler(.failure(error))
                 return
             case .success(let data):
+                
+//                let weather = try Weather.getWeather(from: data)
+//                                   guard let weatherUnwrapped = weather else {completionHandler(.failure(.invalidJSONResponse));return
+//                                   }
+//                                   completionHandler(.success(weatherUnwrapped))
+                
                 do {
                     let photos = try Photo.getPhotosFromData(from: data)
-                    completionHandler(.success(photos))
+                    guard let photosUnwrapped = photos else {completionHandler(.failure(.invalidJSONResponse)); return}
+                    completionHandler(.success(photosUnwrapped))
                 } catch {
                     completionHandler(.failure(.couldNotParseJSON(rawError: error)))
                 }
